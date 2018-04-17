@@ -34,4 +34,5 @@ decode_results=ft_timelockanalysis([],ft_preproc_struc);
 decode_results=rmfield(decode_results, 'var');
 decode_results.time=nparray2mat(mne_decode_results.times);
 decode_results.avg=nparray2mat(mne_decode_results.data);
+decode_results.roc=nparray2mat(mne_decode_results.roc_auc);
 
