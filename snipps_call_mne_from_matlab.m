@@ -93,11 +93,11 @@ template_grid=ft_convert_units(sourcemodel, 'm');
 %%
 
 cfg                = [];
-cfg.grid.warpmni   = 'yes';
-cfg.grid.template  = template_grid;
-cfg.grid.nonlinear = 'yes';
-cfg.mri=mriF;
-%cfg.grid.resolution = .007;
+% cfg.grid.warpmni   = 'yes';
+% cfg.grid.template  = template_grid;
+% cfg.grid.nonlinear = 'yes';
+% cfg.mri=mriF;
+cfg.grid.resolution = .007;
 cfg.headmodel = hdm;
 cfg.grid.unit      ='m';
 grid               = ft_prepare_sourcemodel(cfg);
@@ -133,7 +133,7 @@ cfg.headmodel.unit        = 'm'; % th: dirty hack to make this work. as we alway
 cfg.grid            = grid;
 cfg.lcmv.keepfilter = 'yes';
 cfg.lcmv.fixedori   = 'yes';
-cfg.lcmv.lambda     = '5%';
+cfg.lcmv.lambda     = '10%';
 
 lcmvall=ft_sourceanalysis(cfg, data_avg);
 
@@ -154,23 +154,23 @@ cfg.package.svs=true;
 obob_init_ft(cfg);
 
 %%
-cfg=[];
-cfg.baseline=[-.2 -.05];
-cfg.baselinetype='relchange';
-data_source=obob_svs_timelockbaseline(cfg, data_source);
+% cfg=[];
+% cfg.baseline=[-.2 -.05];
+% cfg.baselinetype='relchange';
+% data_source=obob_svs_timelockbaseline(cfg, data_source);
 
 %%
 cfg=[];
 cfg.sourcegrid=grid;
 cfg.parameter='avg';
-cfg.latency=[.1425 .1425];
+cfg.latency=[.120 .160];
 cfg.mri=mriF;
 sourcecoeff=obob_svs_virtualsens2source(cfg, data_source);
 
 %%
 sourcecoeff.avg=abs(sourcecoeff.avg);
 
-sourcecoeff.mask=(sourcecoeff.avg > max(sourcecoeff.avg(:))*.25);
+sourcecoeff.mask=(sourcecoeff.avg > max(sourcecoeff.avg(:))*.75);
 cfg=[];
 cfg.funparameter='avg';
 cfg.maskparameter='mask';
