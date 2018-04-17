@@ -174,5 +174,6 @@ sourcecoeff.mask=(sourcecoeff.avg > max(sourcecoeff.avg(:))*.75);
 cfg=[];
 cfg.funparameter='avg';
 cfg.maskparameter='mask';
+
 ft_sourceplot(cfg,sourcecoeff);
 
