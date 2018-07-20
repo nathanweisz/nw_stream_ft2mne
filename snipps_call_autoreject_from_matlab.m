@@ -9,7 +9,7 @@ obob_init_ft
 addpath('~/Documents/MATLAB/nw_stream_ft2mne/');
 nw_stream_ft2mne_init
 %%
-fileinfo='/Users/b1019548/Desktop/Data_Sternberg/jens_H.fif';
+fileinfo='/Users/b1019548/Desktop/Data_Sternberg/jens_L.fif';
 %fileinfo='/Users/b1019548/mne_data/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif';
 
 cfg             = [];
@@ -53,9 +53,10 @@ cfg.preproc.hpfreq=1;
 cfg.preproc.hpfilttype='firws';
 data=ft_rejectvisual(cfg, data);
 
-%data.sampleinfo=[origtrl(:,1), origtrl(:,2)];
+data.sampleinfo=[origtrl(:,1), origtrl(:,2)];
 
-badsens=py.list({py.str('MEG2443'),py.str('MEG1711')});
+%badsens=py.list({py.str('MEG2443'),py.str('MEG1711')});
+badsens=py.list({});
 
 %%
 cfg=[];

@@ -1,10 +1,10 @@
 function [mne_epochs]=nw_ftpreproc2mne(preprocdata)
 %Converts fieldtrip preprocessing structure into an MNE Epochs structure.
 
-% for ii=1:length(preprocdata.label)
-%     tmp=preprocdata.label{ii};
-%     preprocdata.label{ii}=tmp(~isspace(tmp));
-% end
+for ii=1:length(preprocdata.label)
+    tmp=preprocdata.label{ii};
+    preprocdata.label{ii}=tmp(~isspace(tmp));
+end
 
 ch_names = py.list(preprocdata.label');
 

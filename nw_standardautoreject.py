@@ -14,6 +14,8 @@ def runautoreject(epochs, fiffile, senstype, bads=[], n_interpolates = np.array(
     info['bads'] = list()
     info['projs'] = list()
     info['sfreq']=epochs.info['sfreq']
+    
+    info=mne.pick_info(info, epochs.picks)
     epochs.info=info #required since no channel infos
     epochs.pick_types(meg=True)
     
