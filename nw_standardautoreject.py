@@ -10,13 +10,14 @@ def runautoreject(epochs, fiffile, senstype, bads=[], n_interpolates = np.array(
 
     check_random_state(42)  
     
-    raw = mne.io.read_raw_fif(fiffile, preload=True)
-    raw.info['bads'] = list()
-    raw.pick_types(meg=True)
-    raw.info['projs'] = list()
-    epochs.info=raw.info #required since no channel infos
+    info = mne.io.read_info(fiffile)
+    info['bads'] = list()
+    info['projs'] = list()
+    info['sfreq']=epochs.info['sfreq']
+    epochs.info=info #required since no channel infos
+    epochs.pick_types(meg=True)
     
-    del raw
+    del info
       
     
     picks = mne.pick_types(epochs.info, meg=senstype, eeg=False, stim=False, eog=False, include=[], exclude=bads)

@@ -9,8 +9,8 @@ obob_init_ft
 addpath('~/Documents/MATLAB/nw_stream_ft2mne/');
 nw_stream_ft2mne_init
 %%
-%fileinfo='/Users/b1019548/Desktop/Data_Sternberg/jens_H.fif';
-fileinfo='/Users/b1019548/mne_data/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif';
+fileinfo='/Users/b1019548/Desktop/Data_Sternberg/jens_H.fif';
+%fileinfo='/Users/b1019548/mne_data/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif';
 
 cfg             = [];
 cfg.channel = 'MEG';
