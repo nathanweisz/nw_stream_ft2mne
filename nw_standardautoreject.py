@@ -6,7 +6,7 @@ from mne.utils import check_random_state  # noqa
 from autoreject import (AutoReject, set_matplotlib_defaults)  # noqa
 
 
-def runautoreject(epochs, fiffile, senstype, bads=[], n_interpolates = np.array([1, 4, 32]), consensus_percs = np.linspace(0, 1, 11)):
+def runautoreject(epochs, fiffile, senstype, bads=[], resamplefs=128, n_interpolates = np.array([1, 4, 32]), consensus_percs = np.linspace(0, 1, 11)):
 
     check_random_state(42)  
     
@@ -29,8 +29,12 @@ def runautoreject(epochs, fiffile, senstype, bads=[], n_interpolates = np.array(
     epochs.preload=True
     epochs.detrend=0
     
+    epochs.resample(resamplefs)
     
-    ar = AutoReject(n_interpolates, consensus_percs, picks=picks, thresh_method='bayesian_optimization', random_state=42, verbose=False)
+    
+    
+    #ar = AutoReject(n_interpolates, consensus_percs, picks=picks, thresh_method='bayesian_optimization', random_state=42, verbose=False)
+    ar = AutoReject(n_interpolates, consensus_percs, picks=picks, thresh_method='random_search', random_state=42, verbose=False)
   
     epochs, reject_log = ar.fit_transform(epochs, return_log=True)
     return reject_log

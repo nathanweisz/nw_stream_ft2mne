@@ -39,11 +39,11 @@ for ii= 1:length(data.time)
 end
 
 %% downsample to speed up --> implement in MNE
-
-cfg=[];
-cfg.resamplefs=128;
-
-data=ft_resampledata(cfg, data);
+% 
+% cfg=[];
+% cfg.resamplefs=128;
+% 
+% data=ft_resampledata(cfg, data);
 
 %%
 cfg=[]; 
