@@ -1,4 +1,4 @@
-pyversion('/Users/b1019548/anaconda3/envs/py27/bin/python')
+pyversion('/Users/b1019548/anaconda3/envs/mne')
 
 %%
 restoredefaultpath
@@ -42,9 +42,10 @@ DecRes_cmb=ft_combineplanar([], DecRes);
 %%
 
 cfg=[];
-cfg.channel='MEGGRAD';
+cfg.channel='MEGMAG';
 cfg.layout='neuromag306mag';
-ft_singleplotER(cfg, DecRes_cmb);
+cfg.zlim='maxabs';
+ft_multiplotER(cfg, DecRes_cmb);
 
 %%
 
